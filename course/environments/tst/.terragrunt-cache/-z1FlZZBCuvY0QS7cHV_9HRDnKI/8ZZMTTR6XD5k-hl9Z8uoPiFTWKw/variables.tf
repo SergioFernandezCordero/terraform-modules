@@ -9,12 +9,12 @@ variable "nombre" {
 }
 
 variable "lista" {
-    type = list(string)
+    type    = list(string)
     default = []
 }
 
 variable "set" {
-    type = set(string)
+    type    = set(string)
     default = []
 }
 
