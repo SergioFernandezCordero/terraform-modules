@@ -1,24 +1,35 @@
 variable "environ" {
-    type    = string
-    default = "local"
+    description = "Environment to be deployed"
+    type        = string
+    default     = "local"
+}
+
+variable "aws_region" {
+    description = "AWS Region to work"
+    type        = string
+    default     = "eu-north-1"
 }
 
 variable "nombre" {
-    type    = string
-    default = "fulano"
+    description = "Stupid variable 1"
+    type        = string
+    default     = "fulano"
 }
 
 variable "lista" {
-    type    = list(string)
-    default = []
+    description = "Stupid variable 1"
+    type        = list(string)
+    default     = []
 }
 
 variable "set" {
-    type    = set(string)
-    default = []
+    description = "Stupid variable 1"
+    type        = set(string)
+    default     = []
 }
 
 variable "content" {
-    type    = string
-    default = "null"
+    description = "Stupid variable 1"
+    type        = string
+    default     = "null"
 }

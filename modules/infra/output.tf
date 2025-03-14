@@ -4,7 +4,6 @@ output "environment" {
 output "nombrado" {
     value   = var.nombre
 }
-
 output "lista" {
     value   = var.set
 }
