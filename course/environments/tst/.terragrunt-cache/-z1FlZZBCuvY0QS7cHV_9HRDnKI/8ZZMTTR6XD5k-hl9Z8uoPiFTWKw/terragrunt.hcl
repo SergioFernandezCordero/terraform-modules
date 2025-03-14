@@ -2,6 +2,7 @@ terraform {
   source = "../../shared"
 }
 inputs = {
-  content = "Hello from TST, Terragrunt!"
+  environ = "TST"
+  content = ""
   nombre = "perengano"
 }
