@@ -1,8 +1,3 @@
-variable "environ" {
-    type    = string
-    default = "local"
-}
-
 variable "nombre" {
     type    = string
     default = "fulano"
