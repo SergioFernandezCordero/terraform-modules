@@ -1,0 +1,16 @@
+variable "nombre" {
+    type    = string
+    default = "fulano"
+}
+
+variable "lista" {
+    type = list(string)
+    default = []
+}
+
+variable "set" {
+    type = set(string)
+    default = []
+}
+
+variable "content" {}
