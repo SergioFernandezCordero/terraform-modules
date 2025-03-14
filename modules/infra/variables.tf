@@ -18,4 +18,7 @@ variable "set" {
     default = []
 }
 
-variable "content" {}
+variable "content" {
+    type    = string
+    default = "null"
+}
