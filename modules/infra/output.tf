@@ -1,13 +1,13 @@
 output "environment" {
-    value   = var.environ
+  value = var.environ
 }
 output "nombrado" {
-    value   = var.nombre
+  value = var.nombre
 }
 output "lista" {
-    value   = var.set
+  value = var.set
 }
 
 output "content" {
-    value   = var.content
+  value = var.content
 }
