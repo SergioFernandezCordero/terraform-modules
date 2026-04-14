@@ -18,3 +18,7 @@ resource "azurerm_resource_group" "test" {
   location  = "westeurope"
   name      = "test-resource-group"
 }
+
+output "output_example" {
+  value = azurerm_resource_group.test.name
+}
