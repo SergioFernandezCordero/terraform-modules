@@ -1,12 +1,20 @@
 terraform {
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "4.68.0"
     }
   }
 }
 
-provider "aws" {
-  region = var.aws_region
+provider "azurerm" {
+  features {}
+  # Remember doing az login with personal account
+  subscription_id = "eed70993-f087-4634-bed2-6876855d18f8"
+  tenant_id = "3524db84-f5fc-4b0c-93b9-8ffe2317bd86"
+}
+
+resource "azurerm_resource_group" "test" {
+  location  = "westeurope"
+  name      = "test-resource-group"
 }
