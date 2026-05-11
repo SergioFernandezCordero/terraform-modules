@@ -36,6 +36,21 @@ resource "azurerm_resource_group" "test3" {
   ]
 }
 
+variable "image_id" {
+  type = string
+  default = "default"
+}
+
+variable "list" {
+  type = list(string)
+  default = ["pepe", "juan", "manolo"]
+}
+
+resource "azurerm_resource_group" "sample" {
+  location  = "westeurope"
+  name      = var.image_id
+}
+
 output "output_example" {
   value = azurerm_resource_group.test.name
 }
