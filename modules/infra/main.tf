@@ -38,12 +38,17 @@ resource "azurerm_resource_group" "test3" {
 
 variable "image_id" {
   type = string
-  default = "default"
+  description = "Identificador absurdo"
+  default = "mengano"
+  validation {
+    condition = length(var.image_id) > 5
+    error_message = "La cagaste Burt Lancaster"
+  }
 }
 
-variable "list" {
-  type = list(string)
-  default = ["pepe", "juan", "manolo"]
+locals {
+  name = "antofagasto"
+  tag = "manolo"
 }
 
 resource "azurerm_resource_group" "sample" {
@@ -51,6 +56,49 @@ resource "azurerm_resource_group" "sample" {
   name      = var.image_id
 }
 
+resource "azurerm_resource_group" "sample2" {
+  location  = "westeurope"
+  name      = "${var.image_id}_tonoto"
+}
+
+resource "azurerm_resource_group" "sample3" {
+  location  = "westeurope"
+  name      = "${var.image_id}_tonoto"
+  tags = {
+    "team" = local.tag
+  }
+}
+
+resource "azurerm_resource_group" "sample4" {
+  count = 0
+  location  = "westeurope"
+  name      = "${var.image_id}_tonoto_${count.index}"
+  tags = {
+    "team" = local.tag
+  }
+}
+
+locals {
+  names = {
+    name01 = "1",
+    name02 = "2",
+    name03 = "3"
+  }
+}
+
+resource "azurerm_resource_group" "sample5" {
+  for_each = local.names
+  location  = "westeurope"
+  name      = "${var.image_id}_tonoto_${each.value}"
+  tags = {
+    "team" = local.tag
+  }
+}
+
 output "output_example" {
   value = azurerm_resource_group.test.name
+}
+
+output "output_image" {
+  value = var.image_id
 }
