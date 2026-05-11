@@ -95,10 +95,19 @@ resource "azurerm_resource_group" "sample5" {
   }
 }
 
+locals {
+  nombres = ["manolo", "pepe", "juan"]
+  mayus = [for i in local.nombres: title(i)]
+}
+
 output "output_example" {
   value = azurerm_resource_group.test.name
 }
 
 output "output_image" {
   value = var.image_id
+}
+
+output "output_list" {
+  value = local.mayus
 }
