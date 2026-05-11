@@ -19,6 +19,23 @@ resource "azurerm_resource_group" "test" {
   name      = "test-resource-group"
 }
 
+resource "azurerm_resource_group" "test2" {
+  location  = "westeurope"
+  name      = "test-resource-group2"
+  tags = {
+    dependency = "azurerm_resource_group.test"
+  }
+}
+
+resource "azurerm_resource_group" "test3" {
+  location  = "westeurope"
+  name      = "test-resource-group3"
+  depends_on = [
+    azurerm_resource_group.test,
+    azurerm_resource_group.test2
+  ]
+}
+
 output "output_example" {
   value = azurerm_resource_group.test.name
 }
