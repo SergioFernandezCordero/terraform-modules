@@ -15,20 +15,15 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "lab01" {
-  location  = "westeurope"
-  name      = "lab01"
+  location  = var.rg_location
+  name      = var.rg_name
 }
 
-resource "azurerm_virtual_network" "lab01-network" {
-  name = "lab01-network"
-  location = azurerm_resource_group.lab01.location
-  resource_group_name = azurerm_resource_group.lab01.name
-  address_space = ["10.0.0.0/16"]
-  subnet {
-    name = "lab01-subnet01"
-    address_prefixes = ["10.0.1.0/24"]
-  }
-  tags = {
-    environment = "laboratory01"
-  }
+module "vnet" {
+  source    = "Azure/avm-res-network-virtualnetwork/azurerm"
+  version   = "0.17.1"
+  location  = var.rg_location
+  parent_id = azurerm_resource_group.lab01.id
+  address_space = var.address_space
+  name = var.vnet_name
 }

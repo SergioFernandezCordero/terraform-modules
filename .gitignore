@@ -1,3 +1,5 @@
 .terraform
 .terraform/*
 /environments/*/.terragrunt-cache/
+terraform.tfstate.backup
+terraform.tfstate
